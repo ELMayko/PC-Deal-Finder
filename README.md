@@ -8,7 +8,7 @@ Searches 'buildapcsales' forum on Reddit.com for the latest pc component deals. 
 
 #### Register your script with Reddit
 
-Follow [these](https://github.com/reddit-archive/reddit/wiki/oauth2) instructions under the 'Getting Started' section in order to create an application and receive a client id and secret for your application. This will allow Reddit to identify your application and grant it access to Reddit's API. Fill out the form as shown using 'http://localhost:8080' for the redirect uri. Be sure to select 'script' for the app type and note that the 'about_uri' field is optional.
+Follow [these](https://github.com/reddit-archive/reddit/wiki/oauth2) instructions under the 'Getting Started' section in order to create an application and receive a client id and secret for your application. This will allow Reddit to identify your application and grant it access to Reddit's API. Fill out the form as shown using 'http://localhost:8080' for the redirect uri. Be sure to select 'script' for the app type and note that the 'about_url' field is optional.
 
 ![Create App](/images/CreateApp.PNG)
 
