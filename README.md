@@ -10,7 +10,7 @@ Searches 'buildapcsales' forum on Reddit.com for the latest pc component deals. 
 
 Follow [these](https://github.com/reddit-archive/reddit/wiki/oauth2) instructions under the 'Getting Started' section in order to create an application and receive a client id and secret for your application. This will allow Reddit to identify your application and grant it access to Reddit's API. Fill out the form as shown using 'pc deal finder v.1.0 (by /u/r_mcmichaels)' as the client agent and 'http://localhost:8080' for the redirect uri. Be sure to select 'script' for the app type.
 
-![Create App](blob/master/images/CreateApp.png)
+![Create App](images/CreateApp.png)
 
 Note: You must have a Reddit account in order to access Reddit's API
 
@@ -22,7 +22,7 @@ To have your search results emailed to you, you must add your email credentials 
 
  Note: For the script to work, you must change the security settings in your gmail account to allow access for less secure apps. This can be done by going to https://www.google.com/settings/security/lesssecureapps, going to the 'Less secure app access' section and clicking 'turn on access'.
 
-![Less Secure App Setting]('/images/LessSecureAppSetting.png')
+![Less Secure App Setting]('images/LessSecureAppSetting.png')
 
 ### Installing
 
