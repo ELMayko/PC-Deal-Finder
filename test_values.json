@@ -1,0 +1,108 @@
+{
+	"sample_list" : [
+		"[HDD] Seagate Backup Plus 4TB Portable USB 3.0 External Hard Drive - $76.99 w/ code 18174",
+						"[PSU]Rosewill 1600W Modular Gaming Power Supply, Continuous @ 50 Degree C, 80 PLUS GOLD Certified, SLI & CrossFire Ready - HERCULES-1600S (399.99 - 55% = $179.99)",
+						"[HDD] Seagate Backup Plus 5TB Portable Hard Drive 89.99 (119.99-30)",
+						"[RAM][B-DIE] Team T-Force DARK Pro 16GB (2 x 8GB) 3200 14-14-14-31 ($119.99)",
+						"[SSD] PNY CS3030 500GB NVME - $60 ($80 - $20 off with coupon code 18174 - need $1.11 filler item)",
+						"[SSD] WD Black SN750 500 GB SSD (117.99-38.00=79.99) (10% first purchase stacks, unsure about student/senior 15%)",
+						"[RAM][B-DIE] G.SKILL TridentZ RGB Series 16GB (2 x 8GB) DDR4 3600 CL17-18-18-38 - $129.99",
+						"[Flash Drive] 128GB SanDisk Ultra Flair USB 3.0 Flash Drive - $11.75 + Free Prime Shipping",
+						"[FlashDrive] SanDisk 256GB Extreme PRO USB 3.1 Flash Drive - $26.99",
+						"[GPU] MSI Radeon RX 570 8GT OC 8GB GDDR5 Video Card + Xbox Game Pass for PC - $119.99 (134.99 - 15MIR)",
+						"[RAM] Team T-FORCE VULCAN Z 16GB (2 x 8GB) DDR4 3200 16-18-18-38 - $59.99",
+						"[FlashDrive] SanDisk 64GB Ultra Fit USB 3.1 Flash Drive - $6.19",
+						"[Monitor] RESTOCK $450/Amazon. AOC CU34G2X 34\" Curved Ultrawide Gaming Monitor, QHD 3440x1440, VA Panel, 1ms 144Hz Freesync, Height Adjustable, 3-Yr Zero Dead Pixels, VESA",
+						"[CPU] AMD Ryzen 3 1200 AF, 12nm refresh- $78.95",
+						"[RAM] GeIL EVO POTENZA 32GB (2 x 16GB) DDR4 3000 Memory - $112.99",
+						"[CASE] Corsair 460X RGB Mid Tower Case RGB Fans Tempered Glass - $119.99 ($139.97 - $19.98)",
+						"[Monitor] MSI Optix MAG27CQ 27\" Curved Gaming Monitor - 2560 x 1440 LCD Display - 144 Hz Authorized MSI Dealer - Brand New - Full Warranty $380",
+						"[CPU]AMD Ryzen 7 3700X 3.6GHz 8-Core $279.99",
+						"[VR] Oculus Quest 128GB sold and shipped by Amazon ($486 = $499-13, Pre-orders)",
+						"[Monitor] AOC CU34G2X 34\" Curved Frameless Immersive Gaming Monitor, UltraWide QHD 3440x1440, VA Panel, 1ms 144Hz $449.99 Restock"
+	],
+
+	"cases" : [
+		{	
+			"comment": "test case where user enters a component which is present once, expect one answer",
+			"component": "VR",
+			"price": "550",
+			"result": [
+				"Title: [VR] Oculus Quest 128GB sold and shipped by Amazon ($486 = $499-13, Pre-orders) Price: $486"
+			]
+		},
+
+		{	
+			"comment": "test case where component given is lower case",
+			"component": "ssd",
+			"price": "200",
+			"result": [
+				"Title: [SSD] PNY CS3030 500GB NVME - $60 ($80 - $20 off with coupon code 18174 - need $1.11 filler item) Price: $60"
+			]
+		},
+
+		{	
+			"comment": "test case where user enters a component which is present multiple times, expect multiple answers",
+			"component": "RAM",
+			"price": "200",
+			"result": [
+				"Title: [RAM][B-DIE] Team T-Force DARK Pro 16GB (2 x 8GB) 3200 14-14-14-31 ($119.99) Price: $119.99",
+				"Title: [RAM][B-DIE] G.SKILL TridentZ RGB Series 16GB (2 x 8GB) DDR4 3600 CL17-18-18-38 - $129.99 Price: $129.99",
+				"Title: [RAM] Team T-FORCE VULCAN Z 16GB (2 x 8GB) DDR4 3200 16-18-18-38 - $59.99 Price: $59.99",
+				"Title: [RAM] GeIL EVO POTENZA 32GB (2 x 16GB) DDR4 3000 Memory - $112.99 Price: $112.99"
+			]
+		},
+
+		{	
+			"comment": "test case where price is = 0 and component is given, expect no results",
+			"component": "ram",
+			"price": "0",
+			"result": []
+		},
+
+		{	
+			"comment": "test case where price is negative and component is given, expect no results",
+			"component": "ram",
+			"price": "-50",
+			"result": []
+		},
+
+		{	
+			"comment": "test case where price is floating point, expect results. Also verifies that results can be expected if given price is equivalent to listed price",
+			"component": "FlashDrive",
+			"price": "6.19",
+			"result": [
+				"Title: [FlashDrive] SanDisk 64GB Ultra Fit USB 3.1 Flash Drive - $6.19 Price: $6.19"
+			]
+		},
+
+		{	
+			"comment": "if original listing does not have a dollar sign before the item price, it will not appear in the result",
+			"component": "HDD",
+			"price": "200",
+			"result": [
+				"Title: [HDD] Seagate Backup Plus 4TB Portable USB 3.0 External Hard Drive - $76.99 w/ code 18174 Price: $76.99"
+			]
+		},
+
+		{	
+			"comment": "test case where user enters a component which is present multiple times, expect multiple answers",
+			"component": "RAM",
+			"price": "20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+			"result": [
+				"Title: [RAM][B-DIE] Team T-Force DARK Pro 16GB (2 x 8GB) 3200 14-14-14-31 ($119.99) Price: $119.99",
+				"Title: [RAM][B-DIE] G.SKILL TridentZ RGB Series 16GB (2 x 8GB) DDR4 3600 CL17-18-18-38 - $129.99 Price: $129.99",
+				"Title: [RAM] Team T-FORCE VULCAN Z 16GB (2 x 8GB) DDR4 3200 16-18-18-38 - $59.99 Price: $59.99",
+				"Title: [RAM] GeIL EVO POTENZA 32GB (2 x 16GB) DDR4 3000 Memory - $112.99 Price: $112.99"
+			]
+		},
+
+		{	
+			"comment": "test case where no matches are present",
+			"component": "ram",
+			"price": "1",
+			"result": []
+		}
+
+	]
+}

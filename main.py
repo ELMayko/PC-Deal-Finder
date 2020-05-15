@@ -6,7 +6,9 @@ import datetime
 import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import dealfind
 
+LIMIT = 15
 
 def send_email(subject,body,config):
 	try:
@@ -30,48 +32,24 @@ def send_email(subject,body,config):
 		print("SUCCESS: EMAIL SENT")
 	except Exception as e:
 		print("Email failed to send")
-		print(e)
+		raise(e)
 
-def item_price(title):
-	position = title.find('$')
-	
-	if position == -1:
-	    return
-	
-	price = get_substring(title, position+1, " ")
-	if not price:
-		return
-
-	return int(float(price))
-
-def get_substring(word, index, delimiter):
-	result = ""
-	while (index < len(word)):
-		if not str.isdigit(word[index]):
-			break
-		result += word[index]
-		index += 1
-	
-	return result
-
-
-def find_matches(component, target_price, post_list):
-	matches = ""
-	for title in post_list:
-		title = title.lower()
-		cost = item_price(title)
-		if component in title and cost:
-			if cost < target_price:
-				matches += "Title: {} Price: ${} \n".format(title, cost)
-	return matches
-	
 def main():
 	config = configparser.ConfigParser()
 	config.sections()
 	config.read('praw.ini')
 	
+	try:
+		interval = config.getint('bot', 'interval')
+		if (interval < LIMIT):
+			raise ValueError('interval given is too low')
+
+	except ValueError as err:
+		print(err.args)
+		raise
+
+
 	while True:
-		time.sleep(config.getint('bot','interval'))
 		reddit = praw.Reddit('bot')
 		subreddit = reddit.subreddit('buildapcsales')
 
@@ -80,15 +58,21 @@ def main():
 		for submission in subreddit.new(limit=20): 
 			post_titles.append(submission.title)
 
-
 		msg = ""
 		target_price = config.getint('bot', 'target_price')
-		component = config['bot']['component'].lower()
-		msg = find_matches(component, target_price, post_titles)
+		component = config['bot']['component']
+		msg = '\n'.join(dealfind.find_matches(component, target_price, post_titles))
+
+		print(msg, flush=True)
 		subject = "Deals on components"
 
 		if len(msg) != 0:
 			send_email(subject, msg, config)
-			
+		else:
+			print("No matches found for {component} under ${price}".format(component=component, price=target_price), flush=True)
+
+		time.sleep(interval * 60)
+		
+
 if __name__ == "__main__":
-	main()
+    main()
