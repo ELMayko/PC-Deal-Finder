@@ -22,7 +22,7 @@ To have your search results emailed to you, you must add your email credentials 
 
  Note: For the script to work, you must change the security settings in your gmail account to allow access for less secure apps. This can be done by going to https://www.google.com/settings/security/lesssecureapps, going to the 'Less secure app access' section and clicking 'turn on access'.
 
-![Less Secure App Setting]('images/LessSecureAppSetting.PNG')
+![Less Secure App Setting](images/LessSecureAppSetting.PNG)
 
 ### Installing
 
