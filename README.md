@@ -1,6 +1,6 @@
 # PC Deal Finder
 
-Searches 'buildapcsales' forum on Reddit.com for the latest pc component deals. If deals that match your search criteria are found, the script will automatically send you an email containing the search results.
+Searches 'buildapcsales' forum on Reddit.com for the latest deals on PC components. Based on user defined criteria, the script will automatically generate a pre-populated email highlighting matched results.
 
 ## Getting Started
 
